@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Services\StoreService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class StoreStatusController extends Controller
 {
     protected $storeService;
 
@@ -17,5 +18,14 @@ class StoreController extends Controller
     public function status(): JsonResponse
     {
         return response()->json($this->storeService->isOpenNow());
+    }
+
+    public function checkDate(Request $request): JsonResponse
+    {
+        $request->validate([
+            'date' => 'required|date',
+        ]);
+
+        return response()->json($this->storeService->checkDate($request->date));
     }
 }
