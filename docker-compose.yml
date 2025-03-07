@@ -2,58 +2,73 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
-    ports:
-      - "8000:8000"
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bakery-backend
+    restart: unless-stopped
+    working_dir: /var/www
     volumes:
-      - ./backend:/var/www/html
+      - ./backend:/var/www
     depends_on:
       - mysql
-    environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_DATABASE=bakery_db
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
-    command: php artisan serve --host=0.0.0.0 --port=8000
-
-  frontend:
-    build: ./frontend
+    networks:
+      - bakery-network
+    env_file:
+      - ./backend/.env
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app
-    depends_on:
-      - backend
-    environment:
-      - VITE_API_URL=http://localhost:8000/api
-    command: npm run dev
+    - "8080:8000"
 
   mysql:
     image: mysql:8
-    restart: always
+    container_name: bakery-mysql
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: bakery_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
+    networks:
+      - bakery-network
     volumes:
       - mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    restart: always
+    container_name: bakery-phpmyadmin
+    restart: unless-stopped
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: rootpassword
     depends_on:
       - mysql
+    networks:
+      - bakery-network
+
+  # Vue Frontend (Node.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bakery-frontend
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    networks:
+      - bakery-network
+    depends_on:
+      - backend
+
+networks:
+  bakery-network:
+    driver: bridge
 
 volumes:
   mysql_data:

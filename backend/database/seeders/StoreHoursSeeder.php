@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\StoreHours;
+use App\Models\StoreHour;
 use Illuminate\Database\Seeder;
 
 class StoreHoursSeeder extends Seeder
@@ -17,7 +17,7 @@ class StoreHoursSeeder extends Seeder
         ];
 
         foreach ($hours as $hour) {
-            StoreHours::create($hour);
+            StoreHour::create($hour);
         }
     }
 }
