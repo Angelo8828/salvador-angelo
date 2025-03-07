@@ -6,7 +6,10 @@ A simple web application for managing bakery opening hours, checking store statu
 
 ## **📌 Prerequisites**
 Ensure you have the following installed on your system before proceeding:
+
 ✅ [Docker](https://www.docker.com/)
+✅ [Node.js](https://nodejs.org/) (latest LTS recommended)
+✅ npm (comes with Node.js)
 
 ---
 
