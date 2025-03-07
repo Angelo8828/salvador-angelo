@@ -1,5 +1,5 @@
 # Use Node.js LTS version
-FROM node:18-alpine
+FROM node:18
 
 # Set working directory
 WORKDIR /app
@@ -10,6 +10,12 @@ RUN npm install
 
 # Copy project files
 COPY . .
+
+# Change ownership of the working directory to a non-root user
+RUN chown -R node:node /app
+
+# Switch to non-root user
+USER node
 
 # Build Vue app
 RUN npm run build
