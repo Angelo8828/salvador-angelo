@@ -7,11 +7,9 @@ A simple web application for managing bakery opening hours, checking store statu
 ## **📌 Prerequisites**
 Ensure you have the following installed on your system before proceeding:
 
-✅ [Docker](https://www.docker.com/)
-✅ [Node.js](https://nodejs.org/) (latest LTS recommended)
-✅ npm (comes with Node.js)
-
----
+- ✅ [Docker](https://www.docker.com/)
+- ✅ [Node.js](https://nodejs.org/) (latest LTS recommended)
+- ✅ npm (comes with Node.js)
 
 ## **🚀 Installation & Setup**
 
@@ -38,7 +36,7 @@ docker exec -it bakery-backend php artisan migrate --seed
 
 5. Verify that the backend API is running:
 Open your browser and visit:
-👉 http://127.0.0.1:8080
+- 👉 http://127.0.0.1:8080
 
 6. Run automated tests to verify if all things are working
 ```
@@ -58,7 +56,7 @@ npm run dev
 ```
 
 3. Access the frontend in your browser:
-👉 http://localhost:5173 (or depending on the path that will be provided by Vite)
+- 👉 http://localhost:5173 (or depending on the path that will be provided by Vite)
 
 ### **🐬 Database Management (phpMyAdmin)**
 
