@@ -70,8 +70,8 @@ Login Credentials:
 
 ### **📸 Screenshots**
 
-#### 📍 Store Status Widget
+#### 📍 Store Status API
 ![Store Status API](screenshot1.png)
 
-#### 📍 Date Picker Feature
+#### 📍 Vue App
 ![Vue App](screenshot2.png)
