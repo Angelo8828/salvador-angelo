@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^11.0.1",
     "axios": "^1.8.1",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/compiler-sfc": "^3.5.13",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.1",
