@@ -40,6 +40,11 @@ docker exec -it bakery-backend php artisan migrate --seed
 Open your browser and visit:
 👉 http://127.0.0.1:8080
 
+6. Run automated tests to verify if all things are working
+```
+docker exec -it bakery-backend php artisan test
+```
+
 ### **🎨 Frontend (Vue.js) Setup**
 
 1. Navigate to the frontend directory:
