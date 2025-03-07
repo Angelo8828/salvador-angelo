@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StoreHours extends Model
+class StoreHour extends Model
 {
-    //
+    protected $table = 'store_hours';
 }
